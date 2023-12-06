@@ -3,14 +3,13 @@
  */
 
 const reservationsService = require("./reservations.service.js");
- const errorHandler = require("../errors/errorHandler");
- const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
+const errorHandler = require("../errors/errorHandler");
+const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
 
 async function list(req, res) {
   const data = await reservationsService.list();
-  res.json({ data })
+  res.json({ data });
 }
-
 
 async function create(req, res) {
   const reservation = req.body.data;
@@ -19,9 +18,7 @@ async function create(req, res) {
   res.status(201).json({ data: reservation });
 }
 
-
 module.exports = {
-
   list: asyncErrorBoundary(list),
   create: asyncErrorBoundary(create),
 };
