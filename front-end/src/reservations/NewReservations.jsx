@@ -1,7 +1,12 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import Form from "./Form";
 
-export default function NewReservation() {
+import { createReservation } from "../utils/api";
+
+export default function Reservations() {
+  const history = useHistory();
+
   const initialFormData = {
     first_name: "",
     last_name: "",
@@ -11,6 +16,8 @@ export default function NewReservation() {
     people: 0,
   };
 
+  const [formData, setFormData] = useState({ ...initialFormData });
+
   const handleFormChange = (e) => {
     setFormData({
       ...formData,
@@ -18,11 +25,16 @@ export default function NewReservation() {
     });
   };
 
-  const handleSubmit = () => {};
-
-  const handleCancel = () => {};
-
-  const [formData, setFormData] = useState({ ...initialFormData });
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+        await createReservation(formData);
+        history.push(`/reservations`);
+        history.go(0);
+    } catch (err) {
+        console.log("whoops")
+    }
+  };
 
   return (
     <>

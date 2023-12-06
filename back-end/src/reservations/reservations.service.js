@@ -6,7 +6,13 @@ function list() {
     .orderBy("reservations.reservation_date");
 }
 
-function create(reservation) {}
+function create(reservation) {
+  return knex("reservations as r")
+    .insert(reservation)
+    .returning("*")
+    .then((newReservation) => newReservation[0]);
+}
+
 module.exports = {
   list,
   create,
