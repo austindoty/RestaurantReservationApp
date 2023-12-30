@@ -31,7 +31,7 @@ function isValidReservation(req, res, next) {
   const reservation = req.body.data;
 
   if (!reservation) {
-    return next({ status: 400, message: `Must have data property.` });
+    return next({ status: 400, message: `Must be a valid reservation.` });
   }
 
   VALID_RESERVATION_FIELDS.forEach((field) => {
