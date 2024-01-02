@@ -9,12 +9,12 @@ const methodNotAllowed = require("../errors/methodNotAllowed");
 const controller = require("./reservations.controller");
 
 router
-  .route("/:reservation_Id/status")
+  .route("/:reservation_id/status")
   .put(controller.update)
   .all(methodNotAllowed);
 
 router
-  .route("/:reservation_Id")
+  .route("/:reservation_id")
   .get(controller.read)
   .put(controller.modify)
   .all(methodNotAllowed);

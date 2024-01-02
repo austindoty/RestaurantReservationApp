@@ -5,9 +5,10 @@ const VALID_RESERVATION_FIELDS = [
   "first_name",
   "last_name",
   "mobile_number",
+  "people",
   "reservation_date",
   "reservation_time",
-  "people",
+
 ];
 
 //helper function for validation
@@ -29,10 +30,10 @@ function _validateTime(str) {
 //validation middleware
 function isValidReservation(req, res, next) {
   const reservation = req.body.data;
-
-  if (!reservation) {
-    return next({ status: 400, message: `Must be a valid reservation.` });
-  }
+  console.log(reservation)
+  // if (!reservation) {
+  //    return next({ status: 400, message: `Must be a valid reservation.` });
+  //  }
 
   VALID_RESERVATION_FIELDS.forEach((field) => {
     if (!reservation[field]) {
@@ -152,7 +153,7 @@ async function list(req, res) {
   if (mobile_number) {
     reservations = await service.search(mobile_number);
   } else {
-    reservations = date ? await service.listByDate(date) : await service.list();
+    reservations = await service.list();
   }
   res.json({
     data: reservations,
