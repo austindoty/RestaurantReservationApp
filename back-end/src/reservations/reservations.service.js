@@ -2,10 +2,12 @@ const { select } = require("../db/connection");
 const knex = require("../db/connection");
 
 function list() {
-  return knex("reservations")
-    .select("*")
-    // .whereNotIn("status", ["finished", "cancelled"])
-    .orderBy("reservations.reservation_date");
+  return (
+    knex("reservations")
+      .select("*")
+      // .whereNotIn("status", ["finished", "cancelled"])
+      .orderBy("reservations.reservation_date")
+  );
 }
 
 function create(reservation) {
@@ -16,11 +18,13 @@ function create(reservation) {
 }
 
 function listByDate(reservation_date) {
-  return knex("reservations")
-    .select("*")
-    .where({ reservation_date })
-    // .whereNotIn("status", ["finished", "cancelled"])
-    .orderBy("reservations.reservation_time");
+  return (
+    knex("reservations")
+      .select("*")
+      .where({ reservation_date })
+      // .whereNotIn("status", ["finished", "cancelled"])
+      .orderBy("reservations.reservation_time")
+  );
 }
 
 function read(reservation_id) {
