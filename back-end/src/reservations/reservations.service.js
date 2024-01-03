@@ -22,7 +22,7 @@ function listByDate(reservation_date) {
     knex("reservations")
       .select("*")
       .where({ reservation_date })
-      // .whereNotIn("status", ["finished", "cancelled"])
+      .whereNotIn("status", ["finished", "cancelled"])
       .orderBy("reservations.reservation_time")
   );
 }
