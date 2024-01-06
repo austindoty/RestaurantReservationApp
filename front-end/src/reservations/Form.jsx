@@ -42,6 +42,7 @@ export default function Form({
               onChange={handleFormChange}
               required
             />
+            
           </div>
           <div className="pb-1">
             <input
@@ -49,11 +50,13 @@ export default function Form({
               name="mobile_number"
               className="form-control"
               id="mobile_number"
+              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
               placeholder={initialformData?.mobile_number || "Mobile Number"}
               value={initialformData?.mobile_number}
               onChange={handleFormChange}
               required
             />
+              <small>Format: 123-456-7890</small>
           </div>
           <div className="pb-1">
             <input
