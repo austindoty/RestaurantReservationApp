@@ -4,7 +4,7 @@ import { listReservations, listTables } from "../utils/api";
 import ErrorAlert from "../layout/ErrorAlert";
 import { useHistory } from "react-router-dom";
 import { previous, next } from "../utils/date-time";
-import TableList from "./TableList/TableList"
+import TableList from "./TableList/TableList.jsx"
 
 /**
  * Defines the dashboard page.
